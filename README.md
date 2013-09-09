@@ -30,7 +30,6 @@ Dependencies
 * PyYaml - YAML parsers for python.
 * getpass - used to obsecure password prompt.
 
-
 Configuration
 =============
 Ensure you have a proper config.yaml file in your current directory as the script looks for it 
