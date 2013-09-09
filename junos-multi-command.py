@@ -32,11 +32,18 @@ def yamlread(yamlkey, commandline):
 		sys.exit()
 	hostlist = yaml.load(stream)
 
-        for x in hostlist[yamlkey]:
-		print headerleftchar + x + ' Start' + headerrightchar
-		connect(x, '22', commandline, username, password)
-		print headerleftchar + x + ' End' + headerrightchar + '\n'
-	stream.close()
+	try:
+        	for x in hostlist[yamlkey]:
+			print headerleftchar + x + ' Start' + headerrightchar
+			try:
+				connect(x, '22', commandline, username, password)
+        		except Exception, e:
+               			 print e			
+			print headerleftchar + x + ' End' + headerrightchar + '\n'
+		stream.close()
+	except KeyError:
+		print 'Check your config.yaml file as your zone does not exist'
+		sys.exit()
 
 def connect(host, port, cmdline, user, password):
 	conn = manager.connect(host=host,
