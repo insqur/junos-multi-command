@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='junos-multi-command',
-    version='0.3',
+    version='1.0',
     author='Lance Le Roux',
     author_email='wirescrossed@gmail.com',
     packages=['junos-multi-command'],

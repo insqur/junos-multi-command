@@ -39,11 +39,11 @@ realitive to your current directory.
 Configuration file is in YAML format and is divided into zones, below is an example.
 
 Sample config.yaml
-	[root@localhost junos-multi-command]# more config.yaml 
-	firewalls:
-	 - 172.16.50.200
-	 - 172.16.50.201
-	
+		[root@localhost junos-multi-command]# more config.yaml 
+		firewalls:
+		 - 172.16.50.200
+		 - 172.16.50.201
+		
 	routers:
 	 - 172.16.50.200
 
