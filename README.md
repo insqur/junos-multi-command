@@ -49,54 +49,54 @@ routers:
 
 Usage
 =====
-[root@localhost junos-multi-command]# ./junos-multi-command.py -h
-usage: junos-multi-command.py [-h] -z ZONE -c COMMAND [-o OUTPUT]
-
-Run a command on many Juniper Junos OS devices via Netconf.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -z ZONE, --zone ZONE  category of network devices to run command against.
-  -c COMMAND, --command COMMAND
-                        command in quotes.
-  -o OUTPUT, --output OUTPUT
-                        file to output results.
+	[root@localhost junos-multi-command]# ./junos-multi-command.py -h
+	usage: junos-multi-command.py [-h] -z ZONE -c COMMAND [-o OUTPUT]
+	
+	Run a command on many Juniper Junos OS devices via Netconf.
+	
+	optional arguments:
+	  -h, --help            show this help message and exit
+	  -z ZONE, --zone ZONE  category of network devices to run command against.
+	  -c COMMAND, --command COMMAND
+	                        command in quotes.
+	  -o OUTPUT, --output OUTPUT
+	                        file to output results.
 
 i.e. junos-multi-command.py --zone firewalls --command "show chassis hardware"
 
 Example of Command
 ==================
-[root@localhost junos-multi-command]# ./junos-multi-command.py -z firewalls -c "show chassis hardware"
-
-Using YAML Key: firewalls
-Executing Command: show chassis hardware
-
-Enter your network username: root
-Password: 
-
-
-
->>>>>>>>>> 172.16.50.200 Start <<<<<<<<<
-Hardware inventory:
-Item             Version  Part number  Serial number     Description
-Chassis                                9c28b76d076d      JUNOSV-FIREFLY
-Midplane        
-System IO       
-Routing Engine                                           JUNOSV-FIREFLY RE
-FPC 0                                                    Virtual FPC
-  PIC 0                                                  Virtual GE
-Power Supply 0  
->>>>>>>>>> 172.16.50.200 End <<<<<<<<<
-
->>>>>>>>>> 172.16.50.201 Start <<<<<<<<<
-Hardware inventory:
-Item             Version  Part number  Serial number     Description
-Chassis                                2bdc25efad71      JUNOSV-FIREFLY
-Midplane        
-System IO       
-Routing Engine                                           JUNOSV-FIREFLY RE
-FPC 0                                                    Virtual FPC
-  PIC 0                                                  Virtual GE
-Power Supply 0  
->>>>>>>>>> 172.16.50.201 End <<<<<<<<<
+	[root@localhost junos-multi-command]# ./junos-multi-command.py -z firewalls -c "show chassis hardware"
+	
+	Using YAML Key: firewalls
+	Executing Command: show chassis hardware
+	
+	Enter your network username: root
+	Password: 
+	
+	
+	
+	>>>>>>>>>> 172.16.50.200 Start <<<<<<<<<
+	Hardware inventory:
+	Item             Version  Part number  Serial number     Description
+	Chassis                                9c28b76d076d      JUNOSV-FIREFLY
+	Midplane        
+	System IO       
+	Routing Engine                                           JUNOSV-FIREFLY RE
+	FPC 0                                                    Virtual FPC
+	  PIC 0                                                  Virtual GE
+	Power Supply 0  
+	>>>>>>>>>> 172.16.50.200 End <<<<<<<<<
+	
+	>>>>>>>>>> 172.16.50.201 Start <<<<<<<<<
+	Hardware inventory:
+	Item             Version  Part number  Serial number     Description
+	Chassis                                2bdc25efad71      JUNOSV-FIREFLY
+	Midplane        
+	System IO       
+	Routing Engine                                           JUNOSV-FIREFLY RE
+	FPC 0                                                    Virtual FPC
+	  PIC 0                                                  Virtual GE
+	Power Supply 0  
+	>>>>>>>>>> 172.16.50.201 End <<<<<<<<<
 
