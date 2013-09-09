@@ -1,14 +1,21 @@
 #!/usr/bin/env python
 
 from ncclient import manager
-import sys, getpass, yaml
+import sys, getpass, yaml, argparse
+
+def commandlineparser():
+	global args
+	parser = argparse.ArgumentParser(description='Run a command on many Juniper Junos OS devices via Netconf.', epilog='i.e. junos-multi-command.py --zone firewalls --command "show chassis hardware"')
+	parser.add_argument('-z', '--zone', required=True, help='category of network devices to run command against.')
+	parser.add_argument('-c', '--command', required=True, help='command to run in quotes.')
+	args = parser.parse_args()
 
 def welcomemsg(yamlkey, commandline):
 	#Print banner and ask for username and password.
 	global username
 	global password
         print '\nUsing YAML Key: ' + yamlkey
-        print 'Executing Command: '+  str(sys.argv[2]) + '\n'
+        print 'Executing Command: '+  commandline + '\n'
         username = raw_input("Enter your network username: ")
         password = getpass.getpass(prompt='Password: ', stream=None)
 	print "\n\n"
@@ -28,7 +35,6 @@ def yamlread(yamlkey, commandline):
         for x in hostlist[yamlkey]:
 		print headerleftchar + x + ' Start' + headerrightchar
 		connect(x, '22', commandline, username, password)
-		#connect(x, '22', commandline, 'root', 'Cole44!!')	
 		print headerleftchar + x + ' End' + headerrightchar + '\n'
 	stream.close()
 
@@ -51,14 +57,15 @@ def connect(host, port, cmdline, user, password):
 
   
 if __name__ == '__main__':
+	#Get command line arguments
+	commandlineparser()
+
 	#Show welcome message.
-	welcomemsg(sys.argv[1], sys.argv[2])
+	#welcomemsg(sys.argv[], sys.argv[2])
+	welcomemsg(args.zone, args.command)
 	
 	#Pass the yaml key and command from system argumemt to yamlread and loop through each host.
-	yamlread(sys.argv[1], sys.argv[2])
+	yamlread(args.zone, args.command)
 
-		#print headerleftchar + str.strip(line) + ' Start' + headerrightchar
-		#connect(str.strip(line), '22', str(sys.argv[2]), username, password)
-		#print headerleftchar + str.strip(line) + ' End' + headerrightchar + '\n'
 		
 		
